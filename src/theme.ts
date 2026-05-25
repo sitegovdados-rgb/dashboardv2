@@ -1,5 +1,8 @@
 // Detecção de dark mode + tokens de cor compartilhados pelos gráficos.
-export const dm = window.matchMedia('(prefers-color-scheme:dark)').matches;
+export const dm =
+  typeof window !== 'undefined' && typeof window.matchMedia === 'function'
+    ? window.matchMedia('(prefers-color-scheme:dark)').matches
+    : false;
 
 export const tc = dm ? '#9c9a92' : '#5F5E5A';                       // texto/eixo
 export const gc = dm ? 'rgba(255,255,255,0.05)' : 'rgba(0,0,0,0.05)'; // grid
