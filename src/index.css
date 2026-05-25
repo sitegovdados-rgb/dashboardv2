@@ -1,0 +1,122 @@
+/* ============================================================
+   DESIGN SYSTEM — PCI BI Dashboard
+   ============================================================ */
+:root {
+  --color-background-primary: #ffffff;
+  --color-background-secondary: #f4f3ee;
+  --color-text-primary: #2c2c2a;
+  --color-text-secondary: #5f5e5a;
+  --color-border-secondary: #d9d7cf;
+  --color-border-tertiary: #e7e5dd;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-background-primary: #0d1b27;
+    --color-background-secondary: #08131d;
+    --color-text-primary: #e3edf5;
+    --color-text-secondary: #9c9a92;
+    --color-border-secondary: #1d3142;
+    --color-border-tertiary: #13242f;
+  }
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { padding: 16px; background: var(--color-background-secondary); }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); }
+.dash { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--color-background-secondary); border-radius: 12px; overflow: hidden; border: 0.5px solid var(--color-border-tertiary); max-width: 1200px; margin: 0 auto; }
+
+/* ── Header ── */
+.dh { background: #071d2e; padding: .875rem 1.25rem; display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
+.dh-l .dh-title { color: #ddeeff; font-size: 14px; font-weight: 500; }
+.dh-l .dh-sub { color: #3d6885; font-size: 10px; margin-top: 2px; }
+.dh-r { text-align: right; flex-shrink: 0; }
+.dh-date { color: #3d6885; font-size: 10px; }
+.dh-pills { display: flex; gap: 5px; margin-top: 5px; justify-content: flex-end; flex-wrap: wrap; }
+.dh-pill { padding: 2px 8px; border-radius: 10px; font-size: 9px; font-weight: 500; }
+.pg { background: rgba(99, 153, 34, 0.18); color: #97C459; }
+.pa { background: rgba(186, 117, 23, 0.18); color: #FAC775; }
+.pr { background: rgba(163, 45, 45, 0.2); color: #F09595; }
+
+/* ── Navegação por Abas ── */
+.tabs { background: #051420; display: flex; border-bottom: 1px solid rgba(255, 255, 255, 0.05); overflow-x: auto; }
+.tab { padding: 9px 14px; font-size: 11px; color: #3d6885; cursor: pointer; border-bottom: 2px solid transparent; white-space: nowrap; border: none; background: none; font-family: inherit; transition: color .15s; }
+.tab:hover { color: #7aa8c8; }
+.tab.act { color: #7fbfef; border-bottom: 2px solid #378ADD; }
+
+/* ── Barra de Filtros ── */
+.fbar { background: var(--color-background-primary); border-bottom: 0.5px solid var(--color-border-tertiary); padding: .4rem .875rem; display: flex; gap: 7px; align-items: center; flex-wrap: wrap; }
+.fl { font-size: 9px; color: var(--color-text-secondary); text-transform: uppercase; letter-spacing: .07em; }
+.fs { font-size: 10px; padding: 3px 6px; border-radius: 4px; border: 0.5px solid var(--color-border-secondary); background: var(--color-background-secondary); color: var(--color-text-primary); cursor: pointer; outline: none; font-family: inherit; }
+
+/* ── Área de Conteúdo ── */
+.ct { padding: .875rem; background: var(--color-background-secondary); }
+
+/* ── KPI Cards ── */
+.krow { display: grid; gap: 7px; margin-bottom: 8px; }
+.k5 { grid-template-columns: repeat(5, 1fr); }
+.k4 { grid-template-columns: repeat(4, 1fr); }
+.k3 { grid-template-columns: repeat(3, 1fr); }
+.kc { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: 8px; padding: .625rem .75rem; position: relative; overflow: hidden; }
+.kc::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; }
+.kc.bl::before { background: #378ADD; }
+.kc.gr::before { background: #639922; }
+.kc.am::before { background: #BA7517; }
+.kc.rd::before { background: #A32D2D; }
+.kc.pp::before { background: #534AB7; }
+.kc.tl::before { background: #0F6E56; }
+.kl { font-size: 9px; text-transform: uppercase; letter-spacing: .06em; color: var(--color-text-secondary); margin-bottom: 3px; }
+.kv { font-size: 19px; font-weight: 500; color: var(--color-text-primary); line-height: 1.1; }
+.ks { font-size: 9px; margin-top: 3px; }
+.ks.up { color: #639922; }
+.ks.dn { color: #A32D2D; }
+.ks.n { color: var(--color-text-secondary); }
+
+/* ── Layout de Gráficos ── */
+.crow { display: grid; gap: 8px; margin-bottom: 8px; }
+.r2 { grid-template-columns: 1fr 1fr; }
+.r3 { grid-template-columns: 1fr 1fr 1fr; }
+.r1 { grid-template-columns: 1fr; }
+.r12 { grid-template-columns: 1.6fr 1fr; }
+.cc { background: var(--color-background-primary); border: 0.5px solid var(--color-border-tertiary); border-radius: 12px; padding: .875rem; }
+/* Container de gráfico: altura fixa evita o loop de crescimento do Chart.js */
+.cbox { position: relative; width: 100%; }
+.cbox canvas { position: absolute; top: 0; left: 0; width: 100% !important; height: 100% !important; }
+.ct2 { font-size: 11px; font-weight: 500; color: var(--color-text-primary); }
+.cs { font-size: 9px; color: var(--color-text-secondary); margin-top: 1px; margin-bottom: .625rem; }
+
+/* ── Alertas ── */
+.alert { border-radius: 8px; padding: .5rem .75rem; font-size: 10px; margin-bottom: 8px; display: flex; align-items: flex-start; gap: 6px; }
+.ae { background: #FCEBEB; border: 0.5px solid #A32D2D; color: #791F1F; }
+.aw { background: #FAEEDA; border: 0.5px solid #BA7517; color: #633806; }
+.ai { background: #E6F1FB; border: 0.5px solid #378ADD; color: #0C447C; }
+
+/* ── Progress Bars ── */
+.qb { margin: 6px 0; }
+.qbl { display: flex; justify-content: space-between; font-size: 10px; color: var(--color-text-secondary); margin-bottom: 2px; }
+.qt { height: 5px; background: var(--color-background-secondary); border-radius: 3px; }
+.qf { height: 100%; border-radius: 3px; }
+
+/* ── Score Cards ── */
+.scg { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-top: 8px; }
+.sc { background: var(--color-background-secondary); border-radius: 8px; padding: .5rem; text-align: center; }
+.sv { font-size: 18px; font-weight: 500; }
+.sl { font-size: 9px; color: var(--color-text-secondary); margin-top: 2px; }
+
+/* ── Tabelas ── */
+.mt { width: 100%; border-collapse: collapse; font-size: 10px; margin-top: .5rem; }
+.mt th { padding: 4px 6px; background: var(--color-background-secondary); color: var(--color-text-secondary); font-weight: 500; text-align: left; border-bottom: 0.5px solid var(--color-border-secondary); }
+.mt td { padding: 4px 6px; border-bottom: 0.5px solid var(--color-border-tertiary); color: var(--color-text-secondary); vertical-align: top; }
+.mt tr:last-child td { border-bottom: none; }
+
+/* ── Badges ── */
+.b { display: inline-block; padding: 1px 6px; border-radius: 8px; font-size: 9px; font-weight: 500; }
+.bg2 { background: #EAF3DE; color: #27500A; }
+.bb { background: #E6F1FB; color: #0C447C; }
+.ba { background: #FAEEDA; color: #633806; }
+.br { background: #FCEBEB; color: #791F1F; }
+.bs { background: #F1EFE8; color: #444441; }
+
+/* ── Responsivo ── */
+@media (max-width: 480px) {
+  .k5, .k4 { grid-template-columns: repeat(2, 1fr); }
+  .r2, .r3, .r12 { grid-template-columns: 1fr; }
+}
